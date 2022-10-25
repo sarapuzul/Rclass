@@ -1,12 +1,5 @@
----
-title: "practice5.1"
-author: "SARA PUZUL R10632017"
-date: "2022-10-23"
-output: html_document
----
-
-```{r,}
 library(maptools)
+library(rgdal)
 library (sp)
 library(raster)
 library(ggplot2)
@@ -18,6 +11,7 @@ library(rgbif)
 library(mapr)
 library(marmap)
 library(leaflet)
+install.packages("rgdal")
 
 library(raster)
 GTM <- getData('GADM', country="GTM", level=0) 
@@ -40,11 +34,10 @@ gbif.res <- occ_search(scientificName = "Persea americana", limit = 300)
 map_ggplot(gbif.res) +
   coord_sf(xlim = c(-93, -88), ylim = c(13, 18), expand = FALSE)
 
-
 library(marmap)
 library(ggthemes)
 library(ggplot2)
-GTM.bathy <- getNOAA.bathy(lon1=-93,lon2=-87, lat1=13,lat2=18,resolution=1) 
+GTM.bathy <- getNOAA.bathy(lon1=-100,lon2=-87, lat1=10,lat2=20,resolution=1) 
 blues <- colorRampPalette(c("darkblue", "cyan"))
 greys <- colorRampPalette(c(grey(0.4),grey(0.99)))
 plot.bathy(GTM.bathy,
@@ -59,3 +52,5 @@ plot.bathy(GTM.bathy,
            bpal = list(c(0,max(GTM.bathy),greys(100)),c(min(GTM.bathy),0,blues(100))),
            land=T, xaxs="i"
 )
+
+
