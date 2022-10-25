@@ -6,6 +6,7 @@ output: html_document
 ---
 
 ```{r,}
+<<<<<<< HEAD
 library(maptools)
 library (sp)
 library(raster)
@@ -19,10 +20,13 @@ library(mapr)
 library(marmap)
 library(leaflet)
 
+=======
+>>>>>>> 905a10cb2035e26ef91e3dacc9307b8541477fab
 library(raster)
 GTM <- getData('GADM', country="GTM", level=0) 
 plot(GTM,axes=T,bg=colors()[431],col='pink')
 coords <- matrix(c(-90.22236,-90.22236,14.13828,17.61871),ncol=2)  
+<<<<<<< HEAD
 spoints <- SpatialPoints(coords)
 text(-90,15.63, 'GUATEMALA', cex=1)
 GTM1$NAME_1
@@ -59,3 +63,19 @@ plot.bathy(GTM.bathy,
            bpal = list(c(0,max(GTM.bathy),greys(100)),c(min(GTM.bathy),0,blues(100))),
            land=T, xaxs="i"
 )
+=======
+coords <- coordinates(coords) 
+spoints <- SpatialPoints(coords) 
+df <- data.frame(location=c("Peten","SYS")) 
+spointsdf <- SpatialPointsDataFrame(spoints,df) 
+plot(spointsdf,add=T,col=c('black','black'),pch=11,cex=1.1) 
+text(-91,14.75, 'GUATEMALA', cex=0.3)
+df <- data.frame(province="Peten")
+text(-90, 16.8, 'Peten',  cex=2.0, col=('green'))
+text(-88.8,14, 'Atlantic Ocean', cex=1.0, col=('yellow'))
+text(-92.1, 16.5, 'Pacific Ocean', cex=1.0, col=('purple'))
+text(-88.5,15, 'Carribean', cex=1.0, col=('red'))
+
+```
+
+>>>>>>> 905a10cb2035e26ef91e3dacc9307b8541477fab
