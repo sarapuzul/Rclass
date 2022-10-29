@@ -1,8 +1,10 @@
 ---
-title: "NEWPRACTICE5.1"
+title: "NEWPRACTICE 5.1"
 author: "SARA PUZUL R10632017"
 date: "2022-10-24"
 output: html_document
+
+homework
 ---
 
 ```{r}
