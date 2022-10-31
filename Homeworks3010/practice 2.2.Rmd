@@ -1,0 +1,31 @@
+---
+title: "Practice 2.2 late"
+author: "SARA PUZUL R10632017"
+date: "2022-10-30"
+output: html_document
+---
+
+```{r, message=FALSE}
+library(tidyr)
+library(dplyr)
+..
+rairuoho <- read.delim ('https://www.dipintothereef.com/uploads/3/7/3/5/37359245/rairuoho.txt')
+head(rairuoho)
+
+rairuoho_1 <- rairuoho %>% mutate(treatment = replace(treatment, treatment == 'nutrient', 'enriched'))
+head(rairuoho_1)
+
+rairuoho_1<-rairuoho_1%>%pivot_longer(day3:day8,names_to = "day", values_to = "length")
+head(rairuoho_1)
+
+rairuoho_2 <- rairuoho_1 %>%  unite("spatial coordinates", spatial1:spatial2, sep = "_")
+head(rairuoho_2)
+
+rairuoho_3 <- dplyr::select(rairuoho_2, -row, -column)
+head(rairuoho_3)
+
+rairuoho_3 <- dplyr::select(rairuoho_2, -row, -column)
+head(rairuoho_3)
+
+```
+

@@ -1,0 +1,29 @@
+---
+title: "practice3.2late"
+author: "SARA PUZUL R10632017"
+date: "2022-10-30"
+output: html_document
+---
+
+```{r, message=FALSE}
+.
+library(tidyverse)
+before_diet <- c(104, 95, 87, 77, 112)
+after_diet <- c(96, 91, 81, 75, 118)
+data<-data.frame(before_diet, after_diet, row.names=paste("Subject_", 1:5))
+data
+data2 <- data %>% pivot_longer(before_diet:after_diet, names_to="time", values_to="weight") %>% as.data.frame()
+data2
+data2
+data2$time <- as.factor(data2$time)
+str(data2)
+
+subject_ <- rownames(data)
+weight_loss <- c((data[,2]-data[,1]))/(data[,1]=100)
+weight_data <- data.frame(subject_,weight_loss)
+WEIGHT_LOSS <- list(subject_ = subject_, weight_loss, weight_data = weight_data)
+str(WEIGHT_LOSS)
+
+TEXT <- "I enjoy learn R"
+```
+
