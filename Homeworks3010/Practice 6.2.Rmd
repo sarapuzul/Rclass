@@ -1,0 +1,48 @@
+---
+title: "Practice 6.2"
+author: "SARA PUZUL R10632017"
+date: "2022-11-22"
+output: html_document
+---
+
+```{r}
+library(animation)
+library(ggplot2)
+library (gganimate)
+
+grow<-function(start_1, start_2){
+  num_gen<-30
+  N1 <- rep(0,10)
+  N2 <- rep(0,10)
+  generation<-1:num_gen
+  growth.rate1<-3.2
+  growth.rate2<-1.2
+  K1<-100
+  K2<-120
+  a12<-0.8
+  a21<-0.8
+  N1[1] <- start_1
+  N2[1] <- start_2
+  for (i in 2:num_gen)  {
+    N1[i] = N1[i-1] + (growth.rate1*N1[i-1] * ((K1-N1[i-1]-(a12*N2[i-1]))/K1))
+    N2[i] = N2[i-1] + (growth.rate2*N2[i-1] * ((K2-N2[i-1]-(a21*N2[i-1]))/K2))}
+if (N1[1]>0){
+  plot(N1~generation,typ='b',ylim=c(0,max(c(K1,K2))),ylab="N")
+}  else {
+  plot(N1~generation,typ="n",ylim=c(0,max(c(K1,K2))),ylab="N")
+}
+if (N2[1]>0){
+  lines(N2~generation,typ="b",col=2)}
+}
+  par(mar=c(1,1,1,1),mfrow=c(5,1),las=1)
+
+  grow(4,10)
+  text(4,10,"Species 1 alone")
+  
+  grow(0,1)
+  text(4,10,"Species 2 alone")
+  
+  grow(1,2)
+  text(6,10,"Both Species competing")
+```
+
